@@ -1,4 +1,10 @@
-const allUlLinks = document.querySelector('#categories');
+const allCat = document.querySelectorAll(".item");
+console.log(`Number of categories: ` + allCat.length);
 
-const allLiLinks = allUlLinks.querySelectorAll('.item');
-console.log('Number of categories : ' + allLiLinks.length);
+const categoriesArray = [...allCat]
+  .map(
+    categories => `Category: ${categories.children[0].textContent}
+    Elements: ${categories.children[1].children.length} \n`
+  )
+  .join("\n");
+console.log(categoriesArray);

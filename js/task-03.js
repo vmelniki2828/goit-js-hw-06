@@ -13,24 +13,16 @@ const images = [
   },
 ];
 
-const list = document.querySelector(".gallery");
-
-list.style.display = "flex";
-list.style.gap = "10px";
 
 
-  images.forEach(function (element) {
-    const firstItem = document.createElement("li");
-    firstItem.style.listStyleType = "none";
+const galleryItems = images
+.map(image => `<li><img src="${image.url}" alt="${image.alt}" width ="300" height="200" style="object-fit: cover;"> </li>`)
+.join('');
 
-
-    const srcItem = document.createElement('img');
-    srcItem.src = element.url;
-    srcItem.alt = element.alt;
-    srcItem.style.width = "100%";
-    srcItem.style.height = "100%";
-  
-    
-    firstItem.appendChild(srcItem);
-    list.append(firstItem);
-  });
+const gallery = document.querySelector(".gallery");
+gallery.insertAdjacentHTML("beforeend",galleryItems);
+gallery.style.display = "flex";
+gallery.style.gap = "30px";
+gallery.style.width = "100%";
+gallery.style.height = "100%";
+gallery.style.listStyleType = "none";
